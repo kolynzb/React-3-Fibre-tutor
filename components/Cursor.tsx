@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 type Props = {};
 
-const cursor = (props: Props) => {
+const Cursor = (props: Props) => {
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -56,4 +56,4 @@ const cursor = (props: Props) => {
   );
 };
 
-export default cursor;
+export default Cursor;
