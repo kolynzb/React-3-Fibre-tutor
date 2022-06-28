@@ -48,7 +48,7 @@ const Cursor = (props: Props) => {
         Hello World
       </h1>
       <motion.div
-        className="bg-black h-8 w-8 rounded-full fixed top-0 left-0  "
+        className="bg-white h-8 w-8 rounded-full fixed top-0 left-0  "
         variants={variants}
         animate={cursorVariant}
       />
