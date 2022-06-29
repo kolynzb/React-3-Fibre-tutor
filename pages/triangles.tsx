@@ -73,7 +73,7 @@ function Ground(props: any) {
   );
 }
 
-export default function Triangles() {
+export default function triangles() {
   return (
     <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 15] }}>
       <color attach="background" args={["black"]} />

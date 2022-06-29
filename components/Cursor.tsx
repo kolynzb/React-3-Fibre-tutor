@@ -44,14 +44,22 @@ const Cursor = (props: Props) => {
 
   return (
     <>
-      <h1 onMouseEnter={textEnter} onMouseLeave={textLeave} className="title">
+      <h1
+        onMouseEnter={textEnter}
+        onMouseLeave={textLeave}
+        className="text-white text-xl"
+      >
         Hello World
       </h1>
       <motion.div
-        className="bg-white h-8 w-8 rounded-full fixed top-0 left-0   "
+        className="fixed top-0 left-0  h-8 w-8 "
         variants={variants}
         animate={cursorVariant}
-      />
+      >
+        <div className="border-white border-2 border-dashed h-8 w-8 rounded-full   flex justify-center items-center animate-spin ">
+          <div className="rounded-full bg-white h-2 w-2 transition"></div>
+        </div>
+      </motion.div>
     </>
   );
 };
