@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, Variants } from "framer-motion";
 
 type Props = {};
 
@@ -11,7 +11,7 @@ const Cursor = (props: Props) => {
   const [cursorVariant, setCursorVariant] = useState("default");
 
   useEffect(() => {
-    const mouseMove = (e: any) => {
+    const mouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: e.clientX,
         y: e.clientY,
@@ -24,7 +24,7 @@ const Cursor = (props: Props) => {
     };
   }, []);
 
-  const variants: any = {
+  const variants: Variants = {
     default: {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
@@ -52,13 +52,18 @@ const Cursor = (props: Props) => {
         Hello World
       </h1>
       <motion.div
-        className="fixed top-0 left-0  h-8 w-8 "
+        className="fixed top-0 left-0  h-8 w-8 rounded-full"
         variants={variants}
         animate={cursorVariant}
       >
-        <div className="border-white border-2 border-dashed h-8 w-8 rounded-full   flex justify-center items-center animate-spin ">
-          <div className="rounded-full bg-white h-2 w-2 transition"></div>
-        </div>
+        <motion.div className="border-white border-2 border-dashed h-8 w-8 rounded-full  flex justify-center items-center animate-spin ">
+          <motion.div
+            className="rounded-full bg-white h-2 w-2 "
+            transition={{ delay: 15 }}
+          >
+            <div className="rounded-full bg-white h-2 w-2 transition animate-ping "></div>
+          </motion.div>
+        </motion.div>
       </motion.div>
     </>
   );
