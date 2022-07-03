@@ -74,3 +74,22 @@ const learn: NextPage = (props: Props) => {
 
 export default learn;
 ```
+
+- We are going to create a cube inside the canvas.So we start by adding a mesh , the geometry which defines the specific shape and the material which defines what it will look like.
+- When defining these elements a required attibute is _attach_ which lets us know if its represented of the geometry or the material
+- _args_ represents the general arguments like the height, width and depth these are passed in an array
+
+```tsx
+<Canvas>
+  {/* Define Mesh */}
+  <mesh>
+    {/* Define Geometry */}
+    <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+    {/* Define Material */}
+    <meshStandardMaterial attach="material" />
+  </mesh>
+</Canvas>
+```
+
+- Now you should see a small box on the screen
+  ![box](./docs/1.png)

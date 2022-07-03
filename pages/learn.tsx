@@ -2,13 +2,16 @@ import { NextPage } from "next";
 import React from "react";
 import { Canvas } from "react-three-fiber";
 
-type Props = {};
+type Props = {};17:56
 
 const learn: NextPage = (props: Props) => {
   return (
     <>
-      <Canvas>
-        
+      <Canvas className="h-[100vh] fixed w-[100vw]">
+        <mesh>
+          <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+          <meshStandardMaterial attach="material" />
+        </mesh>
       </Canvas>
     </>
   );
