@@ -80,7 +80,7 @@ export default learn;
 - _args_ represents the general arguments like the height, width and depth these are passed in an array
 
 ```tsx
-<Canvas>
+<Canvas style={{ width: `100vw`, height: `100vh` }}>
   {/* Define Mesh */}
   <mesh>
     {/* Define Geometry */}
@@ -93,3 +93,87 @@ export default learn;
 
 - Now you should see a small box on the screen
   ![box](./docs/1.png)
+
+- or you can use the box component in drei to display a box
+
+```tsx
+import { Box } from "@react-three/drei";
+
+type Props = {};
+const learn: NextPage = (props: Props) => {
+  return (
+    <>
+      <Canvas style={{ width: `100vw`, height: `100vh` }} >
+     <Box />
+      </Canvas>
+    </Canvas>
+  );
+};
+
+export default learn;
+```
+
+- To give it color we add the _meshStandardMaterial_ as a child.The default color is black but you can pass a custom color to it via the color property.
+
+```tsx
+<Box>
+  <meshStandardMaterial attach="material" />
+</Box>
+```
+
+- In this tutorial we shall stick to the mesh because we want to learn thrreeJS fubdamentals in React.
+- There various shapes like circle (_it takes two arguments which are the size and amount of angles _)
+  **note** that if you put 1 as the angle it will give you a triangle.
+  `<circularBufferGeometry attach="geometry" args={[2,200]} /> `
+- So now we need rotate the box.Inorder to do that we use a hook from React Three fibre know as `useFrame` that is called every time a frame is rendered we shall also need `useRef` from react which will help us keep the reference to our mesh.But inorder to do that we need to extrat our mest to its own component.
+
+  ```tsx
+  import { NextPage } from "next";
+  import React, { useRef } from "react";
+  import { Canvas, useFrame } from "react-three-fiber";
+  import { Mesh } from "three";
+
+  type Props = {};
+
+  const learn: NextPage = (props: Props) => {
+    return (
+      <>
+        <Canvas
+          className="h-[100vh] absolute w-[100vw]"
+          style={{ width: `100vw`, height: `100vh` }}
+        >
+          <Cube />
+        </Canvas>
+      </>
+    );
+  };
+
+  export default learn;
+
+  const Cube = () => {
+    const mesh = useRef<Mesh>(null);
+    useFrame(
+      () => (mesh.current!.rotation.x = mesh.current!.rotation.y += 0.01)
+    );
+    return (
+      <mesh ref={mesh}>
+        <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+        <meshStandardMaterial attach="material" />
+      </mesh>
+    );
+  };
+  ```
+
+- So next we have to add light because there cant be color without light.So we add an ambient light its first property is intensity which is the light intensity.
+  <!-- TODO: Convert to gif -->
+  ![rotation](./docs/2.mp4)
+
+```tsx
+<Canvas style={{ width: `100vw`, height: `100vh` }}>
+  <ambientLight intensity={0.3} />
+  <Cube />
+</Canvas>
+```
+
+- notice that the box becomes slightly dull.
+  ![lit](./docs/3.png)
