@@ -6,9 +6,9 @@ import {
 } from "@react-three/drei";
 import { NextPage } from "next";
 import React, { useRef, useState } from "react";
-import { Canvas, MeshProps, useFrame } from "react-three-fiber";
+import { Canvas, MeshProps, useFrame } from "@react-three/fiber";
 import { Mesh } from "three";
-import { useSpring, a } from "react-spring/three";
+import { useSpring, a } from "@react-spring/three";
 
 softShadows();
 type Props = {};
