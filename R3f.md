@@ -1,4 +1,4 @@
-# Using Three Js in React / Next js. OR using 3D in react and next with ts.
+# Using Three Js in React / Next js. OR 3D in react and next with ts.
 
 - Three js and web gl are by far the simplest and most common libraries used to add 3d to the web but they are not supportted by react out of the box.So we use a library called _React three fiber_ that is built on top of three js .
 
@@ -177,3 +177,8 @@ export default learn;
 
 - notice that the box becomes slightly dull.
   ![lit](./docs/3.png)
+  https://docs.pmnd.rs/
+
+### R3F & Shaders
+
+-
